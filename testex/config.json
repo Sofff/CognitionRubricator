@@ -1,0 +1,17 @@
+{
+	"ID": "150",
+	"UrlService": "http://localhost:4322/ServiceBase/",
+	"GetAllTemporaryWords": "alltemporarywords/",
+	"GetTerms": "terms/",
+	"GetParents": "parents/",
+	"GetChilds": "childs/",
+	"GetTemporaryTableWordDescription": "temporarytableworddescription/",
+	"GetTermIDRubricks" : "gettermidrubricks/",
+	"GetRelatedRubricsParents" : "getrelatedrubricsparents/",
+	"GetRelatedRubricsChilds" : "getrelatedrubricschilds/",
+	"GetAdditionalRubricInfo" : "getadditionalrubricinfo/",
+	"EditAdditionalRubricInfoDescription" : "editadditionalrubricinfodescription/",
+	"EditAdditionalRubricInfoSign" : "editadditionalrubricinfosign/",
+	"EditAdditionalRubricInfoDocuments" : "editadditionalrubricinfodocuments/",
+	"EditAdditionalRubricInfoTerms" : "editadditionalrubricinfoterms/"
+}

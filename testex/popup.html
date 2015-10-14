@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Поиск и отображение совпадений в контенте</title>
+		<script type="text/javascript" src="scripts\jquery.js"></script>
+		<script type="text/javascript" src="scripts\jquery.liHighLight.js" ></script>
+		<style>
+			div { 
+				min-width: 10px; min-height: 10px;
+				background: #fc0;
+				outline: 2px solid #000;
+				border: 3px solid #fff;
+				border-radius: 10px;
+			}
+			.b0 {
+				background: red;
+				color: blue;
+			}
+			.b1 {
+				background: green;
+				color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<p style="text-align: center">
+		<button id="enabledButton" class="b1">Работаем</button>
+		<div id="dataList" ></div>
+		<div id="dataList2" ></div>
+		<script src="scripts\popup.js"></script>
+	</body>
+</html>

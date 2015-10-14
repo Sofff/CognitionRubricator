@@ -1,0 +1,248 @@
+
+
+/*body {
+color:#000000;
+background-color:#FFFFFF;
+background-image:url('backgroundImage.bmp');
+background-repeat:no-repeat;
+}
+a  { color:#0000FF; }
+a:visited { color:#800080; }
+a:hover { color:#008000; }
+a:active { color:#FF0000; }*/
+
+.highlight1 {
+	background: #0f3;
+	color: #fff;
+}
+.highlight2 {
+	background: #f30;
+	color: #fff;
+}
+.highlight3 {
+	background: #03f;
+	color: #fff;
+}
+.mainArrowBox {
+	display: none;
+	position: absolute;
+	left: -100px;
+	top: -100px;
+}
+.mainArrowBox > .mainArrowBoxBackground {
+	display: block;
+	position: relative;
+	width: 15px;
+	height: 20px;
+	background-color: highlight;
+}
+.mainArrowBoxBackground > .arrowBox {
+	display: block;
+	position: absolute;
+	top: 1px;
+	bottom: 0px;
+	right: 1px;
+	width: 11px;
+	opacity: 0.8;
+	height: 100% ;
+	width: 100% ;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/button-arrow.png") center center no-repeat;
+}
+
+.butEdit {
+	display: block;
+	float: left;
+	top: 1;
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/gtk-edit.png") center center no-repeat;
+}
+
+.mainMenuBox {
+	display: none;
+	position: absolute;
+	left: 100px;
+	top: 5px;
+}
+.mainMenuBox > .mainMenuBoxBackground {
+	display: block;
+	position: relative;
+}
+.mainMenuBoxBackground > .menuBox {
+	display: block;
+	position: absolute;
+	max-height: 300px;
+	/*height: 300px;*/
+	width: 500px;
+	overflow: auto;
+	overflow-x: hidden;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+div.menuBox > .menuBoxTitle {
+	float: left;
+	height: 25px;
+	width: 100% ;
+	text-align: center;
+	border: 1px solid black;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmTitle.gif");
+	color: Black;
+	font-size: 15pt;
+}
+div.menuBox > div.menuBoxButtons {
+	float: left;
+	width: 100% ;
+	max-height: 200px;
+	overflow: auto;
+	overflow-x: hidden;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmOther.gif");
+}
+div.menuBox > div.menuBoxDescription {
+	float: left;
+	width: 100% ;
+	max-height: 50px;
+	overflow: auto;
+	font: bold 12px Arial;
+	border: 1px solid black;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmOther.gif");
+}
+div.menuBox > div.menuBoxSign {
+	float: left;
+	width: 100% ;
+	max-height: 30px;
+	overflow: auto;
+	border: 1px solid black;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmOther.gif");
+}
+div.menuBox > div.menuBoxDocuments {
+	float: left;
+	width: 100% ;
+	max-height: 40px;
+	overflow: auto;
+	border: 1px solid black;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmOther.gif");
+}
+div.menuBox > div.menuBoxTerms {
+	float: left;
+	width: 100% ;
+	max-height: 40px;
+	overflow: auto;
+	border: 1px solid black;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmOther.gif");
+}
+
+.menuBox > .menuBoxButtons > div.menuBoxButtonsRubric {
+	float: left;
+	width: 100% ;
+	text-align: center;
+	border: 1px solid black;
+	font-size: 0;
+}
+.menuBox > .menuBoxButtons > div.menuBoxButtonsParent {
+	float: left;
+	width: 49.5% ;
+	text-align: center;
+	border: 1px solid black;
+	font-size: 0;
+}
+.menuBox > .menuBoxButtons > div.menuBoxButtonsChild {
+	float: right;
+	width: 49.5% ;
+	text-align: center;
+	border: 1px solid black;
+	font-size: 0;
+}
+
+div.menuBoxButtonsRubric a {
+	display: inline-block;
+	cursor: hand;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgb2.gif");
+	color: Black;
+	text-decoration: none;
+	font: bold 12px Arial;
+	line-height: 32px;
+	width: 100% ;
+	border: 1px solid black;
+}
+div.menuBoxButtonsParent a {
+	display: inline-block;
+	cursor: hand;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgbParent.gif");
+	color: Black;
+	text-decoration: none;
+	font: bold 12px Arial;
+	line-height: 32px;
+	width: 100% ;
+	border: 1px solid black;
+}
+div.menuBoxButtonsChild a {
+	display: inline-block;
+	cursor: hand;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgbChild.gif");
+	color: Black;
+	text-decoration: none;
+	font: bold 12px Arial;
+	line-height: 32px;
+	width: 100% ;
+	border: 1px solid black;
+}
+div.menuBoxButtonsRubric a:hover, div.menuBoxButtonsRubric a.current, div.menuBoxButtonsParent a:hover, div.menuBoxButtonsParent a.current, div.menuBoxButtonsChild a:hover, div.menuBoxButtonsChild a.current {
+	color: white;
+	background-position: 0 -60px;
+	cursor: pointer;
+}
+div.menuBoxButtonsRubric a.dummy, div.menuBoxButtonsParent a.dummy, div.menuBoxButtonsChild a.dummy {
+	width: 2px;
+	padding: 0 0;
+}
+
+/*.menuBox > div.menuButtonsBoxG{
+
+text-align:center;
+background-image: url("images/bgmG.gif");
+border:1px solid black;
+font-size:0;
+}
+
+div.menuButtonsBoxB{
+
+text-align:center;
+background-image: url("images/bgmB.gif");
+border:1px solid black;
+font-size:0;
+}
+
+
+
+div.menuButtonsBoxG a{
+display: inline-block;
+cursor: hand;
+
+background-image: url("images/bgb2.gif");
+color:White;
+text-decoration:none;
+font: bold 12px Arial;
+line-height: 32px;
+width: 100%;
+border: 1px solid black;
+}
+div.menuButtonsBoxG a:hover, div.menuButtonsBoxG a.current{
+background-position:0 -60px;
+}
+
+div.menuButtonsBoxG a.dummy{
+width:2px;
+padding:0 0;
+}
+
+div.menuBox .menuDescriptionBox {
+display: block;
+font: bold 12px Arial;
+opacity: 0.5;
+max-height: 200px;
+height: 100%;
+width: 100%;
+border: 1px solid black;
+background-color: gray;
+}*/
