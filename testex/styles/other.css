@@ -1,28 +1,19 @@
 
 
-/*body {
-color:#000000;
-background-color:#FFFFFF;
-background-image:url('backgroundImage.bmp');
-background-repeat:no-repeat;
+.highlight1, .highlight2, .highlight3 {
+	color: #fff;
 }
-a  { color:#0000FF; }
-a:visited { color:#800080; }
-a:hover { color:#008000; }
-a:active { color:#FF0000; }*/
-
 .highlight1 {
 	background: #0f3;
-	color: #fff;
 }
 .highlight2 {
 	background: #f30;
-	color: #fff;
 }
 .highlight3 {
 	background: #03f;
-	color: #fff;
 }
+
+
 .mainArrowBox {
 	display: none;
 	position: absolute;
@@ -49,38 +40,158 @@ a:active { color:#FF0000; }*/
 	background: url("chrome-extension://__MSG_@@extension_id__/images/button-arrow.png") center center no-repeat;
 }
 
-.butEdit {
+
+.mainArrowSelectBox {
+	display: none;
+	position: absolute;
+	left: -100px;
+	top: -100px;
+}
+.mainArrowSelectBox > .mainArrowSelectBoxBackground {
 	display: block;
-	float: left;
-	top: 1;
+	position: relative;
+	width: 15px;
+	height: 20px;
+	background-color: highlight;
+}
+.mainArrowSelectBoxBackground > .arrowSelectBox {
+	display: block;
+	position: absolute;
+	top: 1px;
+	bottom: 0px;
+	right: 1px;
+	width: 11px;
+	opacity: 0.8;
+	height: 100% ;
+	width: 100% ;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/button-arrow.png") center center no-repeat;
+}
+
+
+.butEdit, .butBack, .imgTypeBT, .imgTypeNT, .imgTypeRT , .imgTypeSN, .imgTypeUF, .imgTypeRUB {
+  display: block;
+  margin: 3px;
+  float:right;
 	width: 24px;
 	height: 24px;
+}
+.imgTypeBT {
+	background: url("chrome-extension://__MSG_@@extension_id__/images/relTypeBT.jpg") center center no-repeat;
+}
+.imgTypeNT {
+	background: url("chrome-extension://__MSG_@@extension_id__/images/relTypeNT.jpg") center center no-repeat;
+}
+.imgTypeRT {
+	background: url("chrome-extension://__MSG_@@extension_id__/images/relTypeRT.jpg") center center no-repeat;
+}
+.imgTypeSN {
+	background: url("chrome-extension://__MSG_@@extension_id__/images/relTypeSN.jpg") center center no-repeat;
+}
+.imgTypeUF {
+	background: url("chrome-extension://__MSG_@@extension_id__/images/relTypeUF.jpg") center center no-repeat;
+}
+.imgTypeRUB {
+	background: url("chrome-extension://__MSG_@@extension_id__/images/relTypeRUB.jpg") center center no-repeat;
+}
+
+.butEdit {
+  margin: 0px;
+	float: left;
 	cursor: pointer;
 	background: url("chrome-extension://__MSG_@@extension_id__/images/gtk-edit.png") center center no-repeat;
 }
+.butBack {
+  margin: 0px;
+	cursor: pointer;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/undo_yellow.png") center center no-repeat;
+}
+/* a:hover {
+    border:1px solid #0000ff;
+}*/
 
-.mainMenuBox {
+
+
+
+div.mainBox {
 	display: none;
 	position: absolute;
-	left: 100px;
+	left: 10px;
 	top: 5px;
 }
-.mainMenuBox > .mainMenuBoxBackground {
-	display: block;
-	position: relative;
+div.mainBoxMovable {
+  display: block;
+  position: absolute;
+  top:-20px;
+  height: 20px;
+  width: 100%;
+  cursor: move;
+  background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmMovable.gif");
 }
-.mainMenuBoxBackground > .menuBox {
+
+
+.mainBox > .mainBoxBackground {
 	display: block;
 	position: absolute;
-	max-height: 300px;
-	/*height: 300px;*/
-	width: 500px;
+	max-height: 600px;
+	min-height: 100px;
+	width: 400px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+	background-color: gray;
+}
+div.mainBoxBackground > .mainBoxTitle {
+	float: left;
+	height: 25px;
+	width: 100% ;
+	text-align: center;
+	border: 1px solid black;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmTitle.gif");
+	color: Black;
+	font-size: 18pt;
+}
+div.mainBoxBackground > div.mainBoxButtonsVote {
+	float: left;
+	width: 100% ;
+	max-height: 200px;
+	overflow: auto;
+	overflow-x: hidden;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmOther.gif");
+}
+div.mainBoxButtonsVote a {
+	display: inline-block;
+	cursor: hand;
+	color: Black;
+	text-decoration: none;
+	font: bold 12px Arial;
+	line-height: 32px;
+	width: 100% ;
+	border: 1px solid black;
+	text-align: center;
+	font-size: 15pt;
+  background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgb.gif");
+}
+div.mainBoxButtonsVote a:hover, div.mainBoxButtonsVote a.current {
+	color: white;
+	background-position: 0 -120px;
+	cursor: pointer;
+}
+div.mainBoxButtonsVote a.dummy {
+	width: 2px;
+	padding: 0 0;
+}
+
+
+.mainBox > .menuRubricatorBoxBackground {
+	display: block;
+	position: absolute;
+	max-height: 400px;
+	min-height: 150px;
+	width: 600px;
 	overflow: auto;
 	overflow-x: hidden;
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+	background-color: gray;
 }
-
-div.menuBox > .menuBoxTitle {
+div.menuRubricatorBoxBackground > .menuRubricatorBoxTitle {
 	float: left;
 	height: 25px;
 	width: 100% ;
@@ -90,159 +201,153 @@ div.menuBox > .menuBoxTitle {
 	color: Black;
 	font-size: 15pt;
 }
-div.menuBox > div.menuBoxButtons {
-	float: left;
-	width: 100% ;
-	max-height: 200px;
-	overflow: auto;
-	overflow-x: hidden;
-	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmOther.gif");
-}
-div.menuBox > div.menuBoxDescription {
+div.menuRubricatorBoxBackground > div.menuRubricatorBoxButtons, div.menuRubricatorBoxBackground > div.menuRubricatorBoxDescription, div.menuRubricatorBoxBackground > div.menuRubricatorBoxSign, div.menuRubricatorBoxBackground > div.menuRubricatorBoxDocuments, div.menuRubricatorBoxBackground > div.menuRubricatorBoxTerms {
 	float: left;
 	width: 100% ;
 	max-height: 50px;
 	overflow: auto;
-	font: bold 12px Arial;
 	border: 1px solid black;
 	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmOther.gif");
 }
-div.menuBox > div.menuBoxSign {
-	float: left;
-	width: 100% ;
-	max-height: 30px;
-	overflow: auto;
-	border: 1px solid black;
-	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmOther.gif");
+div.menuRubricatorBoxBackground > div.menuRubricatorBoxButtons {
+	max-height: 200px;
+	overflow-x: hidden;
 }
-div.menuBox > div.menuBoxDocuments {
-	float: left;
-	width: 100% ;
-	max-height: 40px;
-	overflow: auto;
-	border: 1px solid black;
-	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmOther.gif");
-}
-div.menuBox > div.menuBoxTerms {
-	float: left;
-	width: 100% ;
-	max-height: 40px;
-	overflow: auto;
-	border: 1px solid black;
-	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmOther.gif");
+div.menuRubricatorBoxBackground > div.menuRubricatorBoxDescription {
+	max-height: 100px;
 }
 
-.menuBox > .menuBoxButtons > div.menuBoxButtonsRubric {
+
+.menuRubricatorBoxBackground > .menuRubricatorBoxButtons > div.menuRubricatorBoxButtonsRubric {
 	float: left;
 	width: 100% ;
 	text-align: center;
 	border: 1px solid black;
 	font-size: 0;
 }
-.menuBox > .menuBoxButtons > div.menuBoxButtonsParent {
+.menuRubricatorBoxBackground > .menuRubricatorBoxButtons > div.menuRubricatorBoxButtonsParent, .menuRubricatorBoxBackground > .menuRubricatorBoxButtons > div.menuRubricatorBoxButtonsChild {
 	float: left;
 	width: 49.5% ;
 	text-align: center;
 	border: 1px solid black;
 	font-size: 0;
 }
-.menuBox > .menuBoxButtons > div.menuBoxButtonsChild {
+.menuRubricatorBoxBackground > .menuRubricatorBoxButtons > div.menuRubricatorBoxButtonsChild {
 	float: right;
-	width: 49.5% ;
-	text-align: center;
-	border: 1px solid black;
-	font-size: 0;
 }
 
-div.menuBoxButtonsRubric a {
+div.menuRubricatorBoxButtonsRubric a, div.menuRubricatorBoxButtonsParent a, div.menuRubricatorBoxButtonsChild a {
 	display: inline-block;
 	cursor: hand;
-	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgb2.gif");
 	color: Black;
 	text-decoration: none;
 	font: bold 12px Arial;
 	line-height: 32px;
 	width: 100% ;
 	border: 1px solid black;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgb.gif");
 }
-div.menuBoxButtonsParent a {
-	display: inline-block;
-	cursor: hand;
+div.menuRubricatorBoxButtonsParent a {
 	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgbParent.gif");
-	color: Black;
-	text-decoration: none;
-	font: bold 12px Arial;
-	line-height: 32px;
-	width: 100% ;
-	border: 1px solid black;
 }
-div.menuBoxButtonsChild a {
-	display: inline-block;
-	cursor: hand;
+div.menuRubricatorBoxButtonsChild a {
 	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgbChild.gif");
-	color: Black;
-	text-decoration: none;
-	font: bold 12px Arial;
-	line-height: 32px;
-	width: 100% ;
-	border: 1px solid black;
 }
-div.menuBoxButtonsRubric a:hover, div.menuBoxButtonsRubric a.current, div.menuBoxButtonsParent a:hover, div.menuBoxButtonsParent a.current, div.menuBoxButtonsChild a:hover, div.menuBoxButtonsChild a.current {
+div.menuRubricatorBoxButtonsRubric a:hover, div.menuRubricatorBoxButtonsRubric a.current, div.menuRubricatorBoxButtonsParent a:hover, div.menuRubricatorBoxButtonsParent a.current, div.menuRubricatorBoxButtonsChild a:hover, div.menuRubricatorBoxButtonsChild a.current {
 	color: white;
-	background-position: 0 -60px;
+	background-position: 0 -120px;
 	cursor: pointer;
 }
-div.menuBoxButtonsRubric a.dummy, div.menuBoxButtonsParent a.dummy, div.menuBoxButtonsChild a.dummy {
+div.menuRubricatorBoxButtonsRubric a.dummy, div.menuRubricatorBoxButtonsParent a.dummy, div.menuRubricatorBoxButtonsChild a.dummy {
 	width: 2px;
 	padding: 0 0;
 }
 
-/*.menuBox > div.menuButtonsBoxG{
 
-text-align:center;
-background-image: url("images/bgmG.gif");
-border:1px solid black;
-font-size:0;
+
+.mainBox > .menuThesaurusBoxBackground {
+	display: block;
+	position: absolute;
+	max-height: 400px;
+	min-height: 150px;
+	width: 700px;
+	overflow: auto;
+	overflow-x: hidden;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+	background-color: gray;
+}
+div.menuThesaurusBoxBackground > .menuThesaurusBoxTitle {
+	float: left;
+	height: 25px;
+	width: 100% ;
+	text-align: center;
+	border: 1px solid black;
+	color: Black;
+	font-size: 15pt;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmTitle.gif");
+}
+div.menuThesaurusBoxBackground > div.menuThesaurusBoxButtons {
+	float: left;
+	width: 100% ;
+	max-height: 300px;
+	overflow: auto;
+	overflow-x: hidden;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmOther.gif");
+}
+div.menuThesaurusBoxButtons a {
+	display: inline-block;
+	cursor: hand;
+	color: Black;
+	text-decoration: none;
+	font: bold 16px Arial;
+    text-indent: 10px;
+	line-height: 32px;
+	width: 100% ;
+	border: 1px solid black;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgb.gif");
+}
+div.menuThesaurusBoxButtons a:hover, div.menuThesaurusBoxButtons a.current {
+	color: white;
+	background-position: 0 -120px;
+	cursor: pointer;
+}
+div.menuThesaurusBoxButtons a.dummy {
+	width: 2px;
+	padding: 0 0;
 }
 
-div.menuButtonsBoxB{
-
-text-align:center;
-background-image: url("images/bgmB.gif");
-border:1px solid black;
-font-size:0;
+div.menuThesaurusBoxBackground > div.menuThesaurusBoxButtonsRelationships {
+	float: left;
+	width: 100% ;
+	max-height: 300px;
+	overflow: auto;
+	overflow-x: hidden;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmOther.gif");
 }
-
-
-
-div.menuButtonsBoxG a{
-display: inline-block;
-cursor: hand;
-
-background-image: url("images/bgb2.gif");
-color:White;
-text-decoration:none;
-font: bold 12px Arial;
-line-height: 32px;
-width: 100%;
-border: 1px solid black;
+div.menuThesaurusBoxButtonsRelationships a {
+	position: relative;
+	display: block;
+	cursor: hand;
+	color: Black;
+	text-decoration: none;
+	/*font: bold 12px Arial;*/
+	line-height: 32px;
+	width: 400px;
+	border: 1px solid black;
+	text-align: center;
+	font-size: 14pt;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgb.gif");
 }
-div.menuButtonsBoxG a:hover, div.menuButtonsBoxG a.current{
-background-position:0 -60px;
+div.menuThesaurusBoxButtonsRelationships a:hover, div.menuThesaurusBoxButtonsRelationships a.current {
+	color: white;
+	background-position: 0 -120px;
+	cursor: pointer;
 }
-
-div.menuButtonsBoxG a.dummy{
-width:2px;
-padding:0 0;
+div.menuThesaurusBoxButtonsRelationships a.dummy {
+	width: 2px;
+	padding: 0 0;
 }
-
-div.menuBox .menuDescriptionBox {
-display: block;
-font: bold 12px Arial;
-opacity: 0.5;
-max-height: 200px;
-height: 100%;
-width: 100%;
-border: 1px solid black;
-background-color: gray;
-}*/
+div.menuThesaurusBoxButtonsRelationships a:before {
+    content:'';
+	display: block; 
+}

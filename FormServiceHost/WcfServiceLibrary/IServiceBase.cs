@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using LibraryDBMethods;
 
 namespace WcfServiceLibrary
 {
@@ -49,7 +50,28 @@ namespace WcfServiceLibrary
       [OperationContract]
       bool EditAdditionalRubricInfoTerms(string _id, string _dta);
 
+      [OperationContract]
+      List<TTermTThesaurus> GetTTermTThesaurusListById(string _id, string _ft);
 
+      [OperationContract]
+      TTermTThesaurusNormal GetTTermTThesaurusNormalById(string _id, string _lv, string _ln);
+
+      [OperationContract]
+      Dictionary<string, string> GetTermTextRubricks(string _text);
+
+      [OperationContract]
+      List<TTermTThesaurus> GetTTermTThesaurusListByText(string _text, string _ft);
+
+
+
+
+
+
+
+
+
+      //[OperationContract]
+      //List<TTermTThesaurusRelationship> GetTTermTThesaurusRelationshipsList(string _id, string _lvl);
 
       //[OperationContract]
       //bool SetNewData(string _id, string _value);

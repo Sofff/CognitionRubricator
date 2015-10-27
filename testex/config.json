@@ -13,5 +13,9 @@
 	"EditAdditionalRubricInfoDescription" : "editadditionalrubricinfodescription/",
 	"EditAdditionalRubricInfoSign" : "editadditionalrubricinfosign/",
 	"EditAdditionalRubricInfoDocuments" : "editadditionalrubricinfodocuments/",
-	"EditAdditionalRubricInfoTerms" : "editadditionalrubricinfoterms/"
+	"EditAdditionalRubricInfoTerms" : "editadditionalrubricinfoterms/",
+	"GetTTermTThesaurusListById" : "getttermtthesauruslistbyid/",
+	"GetTTermTThesaurusNormalById" : "getttermtthesaurusnormalbyid/",
+  "GetTermTextRubricks" : "gettermtextrubricks/",
+  "GetTTermTThesaurusListByText" : "getttermtthesauruslistbytext/"
 }

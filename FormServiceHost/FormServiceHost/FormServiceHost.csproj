@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -26,7 +26,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -38,7 +38,6 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -83,9 +82,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibraryDBMethods\ClassLibraryDBMethods.csproj">
-      <Project>{9157e2f6-c06e-4522-87cf-c70b9bc99c4e}</Project>
-      <Name>ClassLibraryDBMethods</Name>
+    <ProjectReference Include="..\LibraryDBMethods\LibraryDBMethods.csproj">
+      <Project>{ee98bd8d-c3de-4ecb-8257-1b0aa434ed93}</Project>
+      <Name>LibraryDBMethods</Name>
     </ProjectReference>
     <ProjectReference Include="..\WcfServiceLibrary\WcfServiceLibrary.csproj">
       <Project>{6ad733a3-eb98-495a-9116-0d0dba7b6d6e}</Project>

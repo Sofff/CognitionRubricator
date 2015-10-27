@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ServiceModel;
 using System.ServiceModel.Description;
-using WcfServiceLibrary;
 using System.Configuration;
 using System.Threading;
+using WcfServiceLibrary;
 
 namespace FormServiceHost
 {
@@ -45,8 +45,8 @@ namespace FormServiceHost
          {
             ewh = new EventWaitHandle(false, EventResetMode.ManualReset);
 
-
-            ServiceBase.Initialize(SetTextTextBoxLog);
+            SetTextTextBoxLog("Service initializing.");
+            ServiceBase.Initialize(SetTextTextBoxLog, new Properties.Settings().KnowledgeBaseConnectionString);
 
             //Uri baseAddress = new Uri(ConfigurationManager.AppSettings["httpBaseAddress"]);
             //Uri baseAddress = new Uri(Properties.Settings.Default.httpBaseAddress);
@@ -58,7 +58,7 @@ namespace FormServiceHost
             host = new ServiceHost(typeof(ServiceBase));
             foreach (ServiceEndpoint se in host.Description.Endpoints)
                SetTextTextBoxLog("Address: " + se.ListenUri.AbsoluteUri);
-            ServiceBase.FillTable();
+            //ServiceBase.FillTable();
             //host.AddServiceEndpoint(typeof(IServiceBase), binding, baseAddress);
             //SetTextTextBoxLog("Address: " + baseAddress.AbsoluteUri);
             //host.AddServiceEndpoint(typeof(IServiceBase), binding, "");

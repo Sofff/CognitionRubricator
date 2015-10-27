@@ -7,10 +7,12 @@ var enabled = true,
 	dataListWords,
 	dataDescriptionWord,
 	data,
+	data2,
 	xhrd = new XMLHttpRequest(),
 	xhrw = new XMLHttpRequest(),
 	xhrc = new XMLHttpRequest(),
-	xhrData = new XMLHttpRequest();
+	xhrData = new XMLHttpRequest(),
+	xhrData2 = new XMLHttpRequest();
 
 
 xhrc.onreadystatechange = function() {
@@ -37,6 +39,11 @@ xhrData.onreadystatechange = function() {
     }
 }
 
+xhrData2.onreadystatechange = function() {
+	if (xhrData2.readyState == 4 && xhrData2.status == 200) {
+		data2 = xhrData2.responseText;
+    }
+}
 
 GetConfig();
 //GetDictionaryWords();
@@ -113,6 +120,13 @@ chrome[b].onMessage.addListener(
 				sendResponse(JSON.stringify(parseDictionary(data)));
 				return true;
 			}
+      else if (request.msg == "getTermTextRubrics")
+			{
+				xhrData.open("GET", conf.UrlService + conf.GetTermTextRubricks + request.text, false);
+				xhrData.send();
+				sendResponse(JSON.stringify(parseDictionary(data)));
+				return true;
+			}
 			else if (request.msg == "getRelatedRubricsChilds")
 			{
 				xhrData.open("GET", conf.UrlService + conf.GetRelatedRubricsChilds + request.idw, false);
@@ -161,6 +175,27 @@ chrome[b].onMessage.addListener(
 				xhrData.send();
 				GetTerms();
 				sendResponse(true);
+				return true;
+			}
+			else if (request.msg == "getTermIDThesauruses")
+			{
+				xhrData2.open("GET", conf.UrlService + conf.GetTTermTThesaurusListById + request.idw + "&" + request.ft, false);
+				xhrData2.send();
+				sendResponse(data2);
+				return true;
+			}
+      else if (request.msg == "getTermTextThesauruses")
+			{
+				xhrData2.open("GET", conf.UrlService + conf.GetTTermTThesaurusListByText + request.text + "&" + request.ft, false);
+				xhrData2.send();
+				sendResponse(data2);
+				return true;
+			}
+			else if (request.msg == "getTTermTThesaurusNormalById")
+				{
+				xhrData2.open("GET", conf.UrlService + conf.GetTTermTThesaurusNormalById + request.idw + "&" + request.lv + "&" + request.ln, false);
+				xhrData2.send();
+				sendResponse(data2);
 				return true;
 			}
 		}

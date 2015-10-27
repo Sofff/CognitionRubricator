@@ -6,7 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Web;
 using System.Text;
-using ClassLibraryDBMethods;
+using LibraryDBMethods;
 
 namespace WcfServiceLibrary
 {
@@ -24,14 +24,16 @@ namespace WcfServiceLibrary
          //}
       }
 
-      public static void Initialize(BaseDelegates.WriteToLog wl)
+      public static void Initialize(BaseDelegates.WriteToLog wl, string cs)
       {
          writeToLog = wl;
 
          if (dbMethods == null)
          {
-            dbMethods = new DBMethods();
-            FillTable();
+            dbMethods = new DBMethods(cs);
+            dbMethods.FillTables();
+            if (writeToLog != null)
+               writeToLog("Dataset filled.");
          }
       }
 
@@ -338,12 +340,109 @@ namespace WcfServiceLibrary
          }
       }
 
+      [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "getttermtthesauruslistbyid/{_id}&{_ft}")]
+      public List<TTermTThesaurus> GetTTermTThesaurusListById(string _id, string _ft)
+      {
+         try
+         {
+            int id;
+            int ift;
+            FindType ft;
+            if (!Int32.TryParse(_id, out id) || id < 0 || !Enum.TryParse(_ft, out ft)) return null;
+
+            List<TTermTThesaurus> list = dbMethods.GetTTermTThesaurusListById(id, ft);
+
+            if (writeToLog != null)
+               writeToLog("Client GetTTermTThesaurusListById: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+
+            return list;
+         }
+         catch (Exception ex)
+         {
+            if (writeToLog != null)
+               writeToLog(ex.ToString());
+            return null;
+         }
+      }
+
+      [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "getttermtthesaurusnormalbyid/{_id}&{_lv}&{_ln}")]
+      public TTermTThesaurusNormal GetTTermTThesaurusNormalById(string _id, string _lv, string _ln)
+      {
+         try
+         {
+            int id, lv ,ln;
+            if (!Int32.TryParse(_id, out id) || id < 0 || !Int32.TryParse(_lv, out lv) || !Int32.TryParse(_ln, out ln)) return null;
+
+            TTermTThesaurusNormal ret = dbMethods.GetTTermTThesaurusNormalById(id, lv, ln);
+
+            if (writeToLog != null)
+               writeToLog("Client GetTTermTThesaurusNormalById: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+
+            return ret;
+         }
+         catch (Exception ex)
+         {
+            if (writeToLog != null)
+               writeToLog(ex.ToString());
+            return null;
+         }
+      }
+
+      [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "gettermtextrubricks/{_text}")]
+      public Dictionary<string, string> GetTermTextRubricks(string _text)
+      {
+         try
+         {
+            if (_text == null || _text.Length < 2) return null;
+
+            Dictionary<string, string> list = dbMethods.GetTermTextRubricks(_text);
+
+            if (writeToLog != null)
+               writeToLog("Client GetTermTextRubricks: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+
+            return list;
+         }
+         catch (Exception ex)
+         {
+            if (writeToLog != null)
+               writeToLog(ex.ToString());
+            return null;
+         }
+      }
+
+      [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "getttermtthesauruslistbytext/{_text}&{_ft}")]
+      public List<TTermTThesaurus> GetTTermTThesaurusListByText(string _text, string _ft)
+      {
+         try
+         {
+            int ift;
+            FindType ft;
+            if (_text == null || _text.Length < 2 || !Enum.TryParse(_ft, out ft)) return null;
+
+            List<TTermTThesaurus> list = dbMethods.GetTTermTThesaurusListByText(_text, ft);
+
+            if (writeToLog != null)
+               writeToLog("Client GetTTermTThesaurusListByText: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+
+            return list;
+         }
+         catch (Exception ex)
+         {
+            if (writeToLog != null)
+               writeToLog(ex.ToString());
+            return null;
+         }
+      }
+        
+
+
+
 
       public static void FillTable()
       {
          try
          {
-            dbMethods.FillTemporaryTableWords();
+            dbMethods.FillTables();
             if (writeToLog != null)
                writeToLog("Dataset filled.");
          }
@@ -365,5 +464,30 @@ namespace WcfServiceLibrary
 
          return false;
       }
+
+
+      //[WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "gettermtthesaurusrelationshipslist/{_id}&{_lvl}")]
+      //public List<TTermTThesaurusRelationship> GetTTermTThesaurusRelationshipsList(string _id, string _lvl)
+      //{
+      //   try
+      //   {
+      //      int id;
+      //      int lvl;
+      //      if (!Int32.TryParse(_id, out id) || id < 0 || !Int32.TryParse(_lvl, out lvl)) return null;
+
+      //      List<TTermTThesaurusRelationship> list = dbMethods.GetTTermTThesaurusRelationshipsList(id, lvl);
+
+      //      if (writeToLog != null)
+      //         writeToLog("Client GetTTermTThesaurusRelationshipsList: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+
+      //      return list;
+      //   }
+      //   catch (Exception ex)
+      //   {
+      //      if (writeToLog != null)
+      //         writeToLog(ex.ToString());
+      //      return null;
+      //   }
+      //}
    }
 }
