@@ -54,7 +54,7 @@ namespace WcfServiceLibrary
       List<TTermTThesaurus> GetTTermTThesaurusListById(string _id, string _ft);
 
       [OperationContract]
-      TTermTThesaurusNormal GetTTermTThesaurusNormalById(string _id, string _lv, string _ln);
+      TTermTThesaurusNormal GetTTermTThesaurusNormalByID(string _id, string _lv, string _ln);
 
       [OperationContract]
       Dictionary<string, string> GetTermTextRubricks(string _text);
@@ -62,10 +62,11 @@ namespace WcfServiceLibrary
       [OperationContract]
       List<TTermTThesaurus> GetTTermTThesaurusListByText(string _text, string _ft);
 
+      [OperationContract]
+      List<GTermGGlossary> GetGTermGGlossaryListByText(string _text, string _ft);
 
-
-
-
+      [OperationContract]
+      GTermGGlossaryDescription GetGTermGGlossaryDescriptionByID(string _id);
 
 
 

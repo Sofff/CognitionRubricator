@@ -3,9 +3,11 @@ var enabledSearch = false, enabledMove = false, moveDivX = 0, moveDivY = 0, text
   arrayUndo = [function() { alert("private")} ],
   listWords, arrowDiv, arrowSelectDiv, mainDiv,
   classesNames = ".mainArrowBox,.mainArrowBoxBackground,.arrowBox,.mainArrowSelectBox,.mainArrowSelectBoxBackground,.arrowSelectBox,"
-    + ".mainBox,.mainBoxMovable,.mainBoxBackground,.mainBoxTitle,.mainBoxButtonsVote,.menuRubricatorBoxBackground,.menuRubricatorBoxTitle,.butBack,"
+    + ".mainBox,.mainBoxMovable,.mainBoxBackground,.mainBoxTitle,.mainBoxButtonsVote,.menuRubricatorBoxBackground,.menuRubricatorBoxTitle,"
+    + ".butBack,.butEdit,.imgTypeBT,.imgTypeNT,.imgTypeRT,.imgTypeSN,.imgTypeUF,.imgTypeRUB,"
     + ".menuRubricatorBoxTitle,.menuRubricatorBoxButtons,.menuRubricatorBoxButtonsRubric,.menuRubricatorBoxButtonsParent,.menuRubricatorBoxButtonsChild,.menuRubricatorBoxDescription,"
-    + ".butEdit,.menuRubricatorBoxSign,.menuRubricatorBoxDocuments,.menuRubricatorBoxTerms,.menuThesaurusBoxBackground,.menuThesaurusBoxTitle,.menuThesaurusBoxButtons,.menuThesaurusBoxButtonsRelationships";
+    + ".menuRubricatorBoxSign,.menuRubricatorBoxDocuments,.menuRubricatorBoxTerms,.menuThesaurusBoxBackground,.menuThesaurusBoxTitle,.menuThesaurusBoxButtons,.menuThesaurusBoxButtonsRelationships,"
+    + ".menuGlossaryBoxBackground,.menuGlossaryBoxTitle,.menuGlossaryBoxButtons,.menuGlossaryBoxDescription";
 
 function createArrowDiv(mca) {
   
@@ -330,8 +332,52 @@ function createGlossaryMenuDiv() {
 			mainDiv.removeChild(mainDiv.lastChild);
 		}
     
+    var menuGlossaryBoxBackgroundElement = document.createElement('div');
+		mainDiv.appendChild(menuGlossaryBoxBackgroundElement);
+		menuGlossaryBoxBackgroundElement.className = 'menuGlossaryBoxBackground';
+    menuGlossaryBoxBackgroundElement.id = 'testexMenuGlossaryBoxBackground';
     
+    var mainBoxMovableElement = document.createElement('div');
+		menuGlossaryBoxBackgroundElement.appendChild(mainBoxMovableElement);
+		mainBoxMovableElement.className = 'mainBoxMovable';
+    mainBoxMovableElement.id = 'testexMainBoxMovableRubricator';
+    mainBoxMovableElement.onmousedown = function(e) {
+      enabledMove = true;
+      var m = mouseMovePosition(e);
+      moveDivX = m[0] - $(mainDiv).position().left;
+      moveDivY = m[1] - $(mainDiv).position().top;
+    };
+    mainBoxMovableElement.onmouseup = function(e) {
+      enabledMove = false;
+    };
     
+    var menuGlossaryBoxTitleElement = document.createElement('div');
+		menuGlossaryBoxBackgroundElement.appendChild(menuGlossaryBoxTitleElement);
+		menuGlossaryBoxTitleElement.className = 'menuGlossaryBoxTitle';
+    menuGlossaryBoxTitleElement.id = 'testexMenuGlossaryBoxTitle';
+    
+    var butBackElement = document.createElement('a');
+    menuGlossaryBoxTitleElement.appendChild(butBackElement);
+    butBackElement.className = 'butBack';
+    butBackElement.onclick = function(e) {
+      undoUse();
+    };
+    
+    var menuGlossaryBoxTitleTextElement = document.createElement('div');
+		menuGlossaryBoxTitleElement.appendChild(menuGlossaryBoxTitleTextElement);
+		menuGlossaryBoxTitleTextElement.className = 'menuGlossaryBoxTitle';
+    menuGlossaryBoxTitleTextElement.innerHTML = 'Глоссы имеющие совпадение по слову:';
+    menuGlossaryBoxTitleTextElement.id = 'testexMenuGlossaryBoxTitle';
+    
+    var menuGlossaryBoxButtonsElement = document.createElement('div');
+		menuGlossaryBoxBackgroundElement.appendChild(menuGlossaryBoxButtonsElement);
+		menuGlossaryBoxButtonsElement.className = 'menuGlossaryBoxButtons';
+    menuGlossaryBoxButtonsElement.id = 'testexMenuGlossaryBoxButtons';
+    
+    var menuGlossaryBoxDescriptionElement = document.createElement('div');
+    menuGlossaryBoxBackgroundElement.appendChild(menuGlossaryBoxDescriptionElement);
+    menuGlossaryBoxDescriptionElement.className = 'menuGlossaryBoxDescription';
+    menuGlossaryBoxDescriptionElement.id = 'testexMenuGlossaryBoxDescription';
     
   } catch (ex) { alert("createGlossaryMenuDiv(): " + ex); }
 }

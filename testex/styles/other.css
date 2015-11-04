@@ -68,7 +68,7 @@
 }
 
 
-.butEdit, .butBack, .imgTypeBT, .imgTypeNT, .imgTypeRT , .imgTypeSN, .imgTypeUF, .imgTypeRUB {
+.butEdit, .butBack, .imgTypeBT, .imgTypeNT, .imgTypeRT, .imgTypeSN, .imgTypeUF, .imgTypeRUB {
   display: block;
   margin: 3px;
   float:right;
@@ -262,6 +262,68 @@ div.menuRubricatorBoxButtonsRubric a.dummy, div.menuRubricatorBoxButtonsParent a
 	width: 2px;
 	padding: 0 0;
 }
+
+
+
+.mainBox > .menuGlossaryBoxBackground {
+	display: block;
+	position: absolute;
+	max-height: 400px;
+	min-height: 150px;
+	width: 600px;
+	overflow: auto;
+	overflow-x: hidden;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+	background-color: gray;
+}
+div.menuGlossaryBoxBackground > .menuGlossaryBoxTitle {
+	float: left;
+	height: 25px;
+	width: 100% ;
+	text-align: center;
+	border: 1px solid black;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmTitle.gif");
+	color: Black;
+	font-size: 15pt;
+}
+div.menuGlossaryBoxBackground > div.menuGlossaryBoxButtons, div.menuGlossaryBoxBackground > div.menuGlossaryBoxDescription {
+	float: left;
+	width: 100%;
+  text-align: center;
+	max-height: 50px;
+	overflow: auto;
+	border: 1px solid black;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgmOther.gif");
+}
+div.menuGlossaryBoxBackground > div.menuGlossaryBoxButtons {
+	max-height: 200px;
+	overflow-x: hidden;
+}
+div.menuGlossaryBoxBackground > div.menuGlossaryBoxDescription {
+	max-height: 200px;
+}
+div.menuGlossaryBoxButtons a {
+	display: inline-block;
+	cursor: hand;
+	color: Black;
+	text-decoration: none;
+	font: bold 12px Arial;
+	line-height: 32px;
+	width: 100% ;
+	border: 1px solid black;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/bgb.gif");
+}
+div.menuGlossaryBoxButtons a:hover, div.menuGlossaryBoxButtons a.current {
+	color: white;
+	background-position: 0 -120px;
+	cursor: pointer;
+}
+div.menuGlossaryBoxButtons a.dummy {
+	width: 2px;
+	padding: 0 0;
+}
+
+
 
 
 

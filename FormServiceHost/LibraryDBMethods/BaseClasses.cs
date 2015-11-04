@@ -11,18 +11,18 @@ namespace LibraryDBMethods
    {
       None = 0,
       Full = 1, //полное совпадение
-      Partial = 2 //чатичное свпадение
+      Partial = 2 //частичное свпадение
    }
 
    [DataContract]
-   public class TTerm //класс термин в тезаурусе
+   public class MutualClass //общий класс родитель вида ID,Name
    {
       [DataMember]
-      public int ID { get; set; } //ид термина
+      public int ID { get; set; } //ид
       [DataMember]
-      public string Name { get; set; } //имя термина
+      public string Name { get; set; } //имя
 
-      public TTerm(int _id = -1, string _name = "")
+      public MutualClass(int _id = -1, string _name = "")
       {
          ID = _id;
          Name = _name;
@@ -30,22 +30,71 @@ namespace LibraryDBMethods
    }
 
    [DataContract]
-   public class TTehesaurus //класс тезауруса в группе тезаурус
+   public class RTerm : MutualClass //термин в рубрикаторе
+   {
+   }
+
+   [DataContract]
+   public class GTerm : MutualClass //термин в глоссарии
+   {
+   }
+
+   [DataContract]
+   public class GGlossary : MutualClass //глоссарий
+   {
+   }
+
+   [DataContract]
+   public class GTermGGlossary //тремин-глоссарий
    {
       [DataMember]
-      public int ID { get; set; } //ид тезауруса
+      public int ID { get; set; }
       [DataMember]
-      public string Name { get; set; } //имя тезауруса
+      public string GTerm { get; set; }
+      [DataMember]
+      public string GGlossary { get; set; }
 
-      public TTehesaurus(int _id = -1, string _name = "")
+      public GTermGGlossary(int _id = -1, string _t = "", string _g = "")
       {
          ID = _id;
-         Name = _name;
+         GTerm = _t;
+         GGlossary = _g;
       }
    }
 
    [DataContract]
-   public class TTermTThesaurus //класс термин-тезаурус в группе тезаурус
+   public class GTermGGlossaryDescription //описание термина в глоссарии
+   {
+      [DataMember]
+      public int ID { get; set; }
+      [DataMember]
+      public int ID_GTerm { get; set; }
+      [DataMember]
+      public int ID_GGlossary { get; set; }
+      [DataMember]
+      public string Description { get; set; }
+
+      public GTermGGlossaryDescription(int _id = -1, int _idt = -1, int _idg = -1, string _d = "")
+      {
+         ID = _id;
+         ID_GTerm = _idt;
+         ID_GGlossary = _idg;
+         Description = _d;
+      }
+   }
+
+   [DataContract]
+   public class TTerm : MutualClass //термин в тезаурусе
+   {
+   }
+
+   [DataContract]
+   public class TTehesaurus : MutualClass //тезаурус в группе тезаурус
+   {
+   }
+
+   [DataContract]
+   public class TTermTThesaurus //термин-тезаурус в группе тезаурус
    {
       [DataMember]
       public int ID { get; set; } //ид термин-тезаурус

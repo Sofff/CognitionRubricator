@@ -238,6 +238,44 @@ namespace LibraryDBMethods
          return true;
       }
 
+
+
+      //поиск терминов в глоссарии (частично или полностью)
+      public List<GTermGGlossary> GetGTermGGlossaryByText(string _tn, FindType _ft)
+      {
+         List<GTermGGlossary> list = new List<GTermGGlossary>();
+
+         string select = "ID < 0";
+         switch (_ft)
+         {
+            case FindType.Full:
+               select = String.Format("Name = {0}", _tn);
+               break;
+            case FindType.Partial:
+               select = String.Format("Name LIKE '%{0}%'", _tn);
+               break;
+         }
+
+         DS.GTermsRow[] trs = dataSet.GTerms.Select(select) as DS.GTermsRow[];
+         if (trs.Length > 0)
+            foreach (DS.GTermsRow tr in trs)
+            {
+               DS.GTermsGGlossariesRow[] tgrs = tr.GetGTermsGGlossariesRows();
+               foreach (DS.GTermsGGlossariesRow tgr in tgrs)
+                  list.Add(new GTermGGlossary(tgr.Id, tgr.GTermsRow.Name, tgr.GGlossariesRow.Name));
+            }
+
+         return list;
+      }
+
+      //поиск описания термин-глоссария по ИД
+      public GTermGGlossaryDescription GetGTermGGlossaryDescriptionByID(int _id)
+      {
+         DS.GTermsGGlossariesRow tgr = dataSet.GTermsGGlossaries.FindById(_id);
+         return new GTermGGlossaryDescription(tgr.Id, tgr.GTerm_ID, tgr.GGlossary_ID, tgr.Description);
+      }
+
+
       //поиск терминов в группе тезаурус по имени (частично или полностью)
       public List<TTermTThesaurus> GetTTermTThesaurusListByName(string _tn, FindType _ft)
       {

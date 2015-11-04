@@ -8,6 +8,19 @@ function ready(i) {
     document.addEventListener("mousemove", mouseMove);
     document.addEventListener("selectionchange", selectionChange, false);
     document.addEventListener("mouseup", mouseUp, false);
+    //chrome.contextMenus.create( { title: "Посмотреть определения", contexts:["selection"], onclick: onClickContextMenu });
+    chrome[chrome.runtime && chrome.runtime.sendMessage ? "runtime" : "extension"].onMessage.addListener(
+      function(request, sender, sendResponse) {
+        if (request.msg == "cbContextMenu")
+        {
+        try {
+          onClickContextMenu(request.txt);
+          sendResponse(true);
+        } catch(ex) { alert(ex); }
+            return true;
+        }
+      }
+    );
   }
   else if (i < 10)
     setTimeout(ready, 1, i+1)
@@ -176,6 +189,19 @@ function mouseUp(e) {
   }
 }
 
+function onClickContextMenu(text) {
+  textSelected = window.getSelection();
+  if (textSelected.toString().length > 1)
+  {
+    refreshMainBoxVote(null, false, textSelected.toString());
+    mainDiv.style.display = 'block';
+    var px = document.body.scrollLeft + document.body.offsetWidth / 2; // + e.clientX; // document.body.scrollLeft + r[r.length - 1].right;
+    var py = document.body.scrollTop + document.body.offsetHeight / 2; // + e.clientY; // document.body.scrollTop + r[r.length - 1].top;
+    
+    mainDiv.style.left = px + "px";
+    mainDiv.style.top = py + 'px';
+  }
+}
 
 function refreshMainBoxVote(_id, b, text) {
 	
@@ -222,11 +248,77 @@ function refreshMainBoxGlossaryFirst(_id, b, text) {
 	
 	try {
 		createGlossaryMenuDiv();
-		
+		if (text)
+      getGTermGGlossaryListByText(text, refreshMainBoxGlossarySecond);
     
-		
+    if (!b)
+      undoAdd(function() { refreshMainBoxGlossaryFirst(_id, true, text); });
+    
 	} catch (ex) { alert("refreshMainBoxGlossaryFirst(_id)" + ex); };
 }
+
+function refreshMainBoxGlossarySecond(arr) {
+	
+	try {
+    var menuGlossaryBoxButtonsElement = $(mainDiv).find('#testexMenuGlossaryBoxButtons')[0];
+    while(menuGlossaryBoxButtonsElement.hasChildNodes()) {
+			menuGlossaryBoxButtonsElement.removeChild(menuGlossaryBoxButtonsElement.lastChild);
+		}
+    var menuGlossaryBoxDescriptionElement = $(mainDiv).find('#testexMenuGlossaryBoxDescription')[0];
+    menuGlossaryBoxDescriptionElement.innerHTML = '';
+    menuGlossaryBoxDescriptionElement.style.display = 'none';
+		
+		$.each(JSON.parse(arr), function(key, value) {
+			var but = document.createElement('a');
+			menuGlossaryBoxButtonsElement.appendChild(but);
+			but.className = 'menuGlossaryBoxButtons';
+			but.text = value.GTerm + " (" + value.GGlossary + ")";
+			but.onclick = function(e) {
+				refreshMainBoxGlossaryDescription(value.ID);
+			};
+		});
+		
+	} catch (ex) {alert("refreshMainBoxGlossarySecond(arr): " + ex);};
+}
+
+function refreshMainBoxGlossaryDescription(_id, b) {
+  
+	try {
+		var menuGlossaryBoxButtonsElement = $(mainDiv).find('#testexMenuGlossaryBoxButtons')[0];
+    while(menuGlossaryBoxButtonsElement.hasChildNodes()) {
+			menuGlossaryBoxButtonsElement.removeChild(menuGlossaryBoxButtonsElement.lastChild);
+		}
+    var menuGlossaryBoxDescriptionElement = $(mainDiv).find('#testexMenuGlossaryBoxDescription')[0];
+    menuGlossaryBoxDescriptionElement.innerHTML = '';
+		
+		getGTermGGlossaryDescriptionByID(_id, refreshMainBoxGlossaryDescriptionText);
+    
+    if (!b)
+      undoAdd(function() { refreshMainBoxGlossaryDescription(_id, true); });
+    
+	} catch (ex) { alert("refreshMainBoxGlossaryDescription(_id): " + ex); }
+}
+
+function refreshMainBoxGlossaryDescriptionText(arr) {
+	
+	try {
+		var menuGlossaryBoxButtonsElement = $(mainDiv).find('#testexMenuGlossaryBoxButtons')[0];
+    while(menuGlossaryBoxButtonsElement.hasChildNodes()) {
+			menuGlossaryBoxButtonsElement.removeChild(menuGlossaryBoxButtonsElement.lastChild);
+		}
+    var menuGlossaryBoxDescriptionElement = $(mainDiv).find('#testexMenuGlossaryBoxDescription')[0];
+    menuGlossaryBoxDescriptionElement.innerHTML = '';
+    menuGlossaryBoxDescriptionElement.style.display = 'block';
+		
+		if (arr)
+		{
+      var val = JSON.parse(arr);
+			menuGlossaryBoxDescriptionElement.innerHTML = val.Description;
+    }
+		
+	} catch (ex) { alert("refreshMainBoxGlossaryDescriptionText: " + ex); };
+}
+
 
 function refreshMainBoxRubricatorSecond(arr) {
 	
@@ -398,7 +490,6 @@ function refreshMainBoxRubricatorRelationshipRubricsInfo(arr) {
 		}
 		
 	} catch (ex) { alert("refreshMainBoxRubricatorRelationshipRubricsInfo(arr): " + ex); };
-
 }
 
 function refreshMainBoxThesaurusSecond(arr) {

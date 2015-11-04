@@ -17,5 +17,7 @@
 	"GetTTermTThesaurusListById" : "getttermtthesauruslistbyid/",
 	"GetTTermTThesaurusNormalById" : "getttermtthesaurusnormalbyid/",
   "GetTermTextRubricks" : "gettermtextrubricks/",
-  "GetTTermTThesaurusListByText" : "getttermtthesauruslistbytext/"
+  "GetTTermTThesaurusListByText" : "getttermtthesauruslistbytext/",
+  "GetGTermGGlossaryListByText" : "getgtermgglossarylistbytext/",
+  "GetGTermGGlossaryDescriptionByID" : "getgtermgglossarydescriptionbyid/"
 }

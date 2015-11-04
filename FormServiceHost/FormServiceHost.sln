@@ -59,6 +59,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{870967
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryDBMethods", "LibraryDBMethods\LibraryDBMethods.csproj", "{EE98BD8D-C3DE-4ECB-8257-1B0AA434ED93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryParseDocuments", "LibraryParseDocuments\LibraryParseDocuments.csproj", "{EA862C58-D698-42A4-844B-D1391C0F926D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{EE98BD8D-C3DE-4ECB-8257-1B0AA434ED93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE98BD8D-C3DE-4ECB-8257-1B0AA434ED93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE98BD8D-C3DE-4ECB-8257-1B0AA434ED93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA862C58-D698-42A4-844B-D1391C0F926D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA862C58-D698-42A4-844B-D1391C0F926D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA862C58-D698-42A4-844B-D1391C0F926D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA862C58-D698-42A4-844B-D1391C0F926D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

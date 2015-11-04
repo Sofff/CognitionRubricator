@@ -7,6 +7,7 @@ using System.ServiceModel.Channels;
 using System.ServiceModel.Web;
 using System.Text;
 using LibraryDBMethods;
+using System.Runtime.CompilerServices;
 
 namespace WcfServiceLibrary
 {
@@ -32,8 +33,7 @@ namespace WcfServiceLibrary
          {
             dbMethods = new DBMethods(cs);
             dbMethods.FillTables();
-            if (writeToLog != null)
-               writeToLog("Dataset filled.");
+            WriteToLog("Dataset filled.");
          }
       }
 
@@ -48,15 +48,13 @@ namespace WcfServiceLibrary
 
             Dictionary<string, string> list = dbMethods.GetAllTemporaryWords();
 
-            if (writeToLog != null)
-               writeToLog("Client GetAllTemporaryWords: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+            WriteToLog("Client GetAllTemporaryWords: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
 
             return list;
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
             return null;
          }
       }
@@ -71,15 +69,13 @@ namespace WcfServiceLibrary
 
             Dictionary<string, string> list = dbMethods.GetAllTerms();
 
-            if (writeToLog != null)
-               writeToLog("Client GetTerms: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+            WriteToLog("Client GetTerms: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
 
             return list;
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
             return null;
          }
       }
@@ -97,15 +93,13 @@ namespace WcfServiceLibrary
             //foreach (DS.TermsRow tr in dataSet.Terms.Rows)
             //   list.Add(tr.id.ToString(), tr.Name);
 
-            if (writeToLog != null)
-               writeToLog("Client GetParents: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+            WriteToLog("Client GetParents: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
 
             return list;
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
             return null;
          }
       }
@@ -120,15 +114,13 @@ namespace WcfServiceLibrary
 
             Dictionary<string, string> list = new Dictionary<string, string>();
 
-            if (writeToLog != null)
-               writeToLog("Client GetChilds: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+            WriteToLog("Client GetChilds: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
 
             return list;
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
             return null;
          }
       }
@@ -143,15 +135,13 @@ namespace WcfServiceLibrary
 
             string result = dbMethods.GetTemporaryTableWordDescription(id);
 
-            if (writeToLog != null)
-               writeToLog("Client GetTemporaryTableWordDescription: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+            WriteToLog("Client GetTemporaryTableWordDescription: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
 
             return result;
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
             return null;
          }
       }
@@ -166,15 +156,13 @@ namespace WcfServiceLibrary
 
             Dictionary<string, string> list = dbMethods.GetTermIDRubricks(id);
 
-            if (writeToLog != null)
-               writeToLog("Client GetTermIDRubricks: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+            WriteToLog("Client GetTermIDRubricks: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
 
             return list;
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
             return null;
          }
       }
@@ -189,15 +177,13 @@ namespace WcfServiceLibrary
 
             Dictionary<string, string> list = dbMethods.GetRelatedRubricsParents(id);
 
-            if (writeToLog != null)
-               writeToLog("Client GetRelatedRubricsParents: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+            WriteToLog("Client GetRelatedRubricsParents: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
 
             return list;
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
             return null;
          }
       }
@@ -212,15 +198,13 @@ namespace WcfServiceLibrary
 
             Dictionary<string, string> list = dbMethods.GetRelatedRubricsChilds(id);
 
-            if (writeToLog != null)
-               writeToLog("Client GetRelatedRubricsChilds: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+            WriteToLog("Client GetRelatedRubricsChilds: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
 
             return list;
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
             return null;
          }
       }
@@ -235,15 +219,13 @@ namespace WcfServiceLibrary
 
             Dictionary<string, string> list = dbMethods.GetAdditionalRubricInfo(id);
 
-            if (writeToLog != null)
-               writeToLog("Client GetAdditionalRubricInfo: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+            WriteToLog("Client GetAdditionalRubricInfo: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
 
             return list;
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
             return null;
          }
       }
@@ -258,15 +240,13 @@ namespace WcfServiceLibrary
 
             dbMethods.EditAdditionalRubricInfoDescription(id, _dta);
 
-            if (writeToLog != null)
-               writeToLog("Client EditAdditionalRubricInfoDescription: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+            WriteToLog("Client EditAdditionalRubricInfoDescription: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
 
             return true;
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
             return false;
          }
       }
@@ -281,15 +261,13 @@ namespace WcfServiceLibrary
 
             dbMethods.EditAdditionalRubricInfoSign(id, _dta);
 
-            if (writeToLog != null)
-               writeToLog("Client EditAdditionalRubricInfoSign: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+            WriteToLog("Client EditAdditionalRubricInfoSign: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
 
             return true;
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
             return false;
          }
       }
@@ -304,15 +282,13 @@ namespace WcfServiceLibrary
 
             dbMethods.EditAdditionalRubricInfoDocuments(id, _dta);
 
-            if (writeToLog != null)
-               writeToLog("Client EditAdditionalRubricInfoDocuments: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+            WriteToLog("Client EditAdditionalRubricInfoDocuments: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
 
             return true;
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
             return false;
          }
       }
@@ -327,15 +303,13 @@ namespace WcfServiceLibrary
 
             dbMethods.EditAdditionalRubricInfoTerms(id, _dta);
 
-            if (writeToLog != null)
-               writeToLog("Client EditAdditionalRubricInfoTerms: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+            WriteToLog("Client EditAdditionalRubricInfoTerms: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
 
             return true;
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
             return false;
          }
       }
@@ -352,21 +326,19 @@ namespace WcfServiceLibrary
 
             List<TTermTThesaurus> list = dbMethods.GetTTermTThesaurusListById(id, ft);
 
-            if (writeToLog != null)
-               writeToLog("Client GetTTermTThesaurusListById: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+            WriteToLog("Client GetTTermTThesaurusListById: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
 
             return list;
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
             return null;
          }
       }
 
       [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "getttermtthesaurusnormalbyid/{_id}&{_lv}&{_ln}")]
-      public TTermTThesaurusNormal GetTTermTThesaurusNormalById(string _id, string _lv, string _ln)
+      public TTermTThesaurusNormal GetTTermTThesaurusNormalByID(string _id, string _lv, string _ln)
       {
          try
          {
@@ -375,15 +347,13 @@ namespace WcfServiceLibrary
 
             TTermTThesaurusNormal ret = dbMethods.GetTTermTThesaurusNormalById(id, lv, ln);
 
-            if (writeToLog != null)
-               writeToLog("Client GetTTermTThesaurusNormalById: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+            WriteToLog("Client GetTTermTThesaurusNormalById: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
 
             return ret;
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
             return null;
          }
       }
@@ -397,15 +367,13 @@ namespace WcfServiceLibrary
 
             Dictionary<string, string> list = dbMethods.GetTermTextRubricks(_text);
 
-            if (writeToLog != null)
-               writeToLog("Client GetTermTextRubricks: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+            WriteToLog("Client GetTermTextRubricks: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
 
             return list;
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
             return null;
          }
       }
@@ -415,25 +383,66 @@ namespace WcfServiceLibrary
       {
          try
          {
-            int ift;
             FindType ft;
             if (_text == null || _text.Length < 2 || !Enum.TryParse(_ft, out ft)) return null;
 
             List<TTermTThesaurus> list = dbMethods.GetTTermTThesaurusListByText(_text, ft);
 
-            if (writeToLog != null)
-               writeToLog("Client GetTTermTThesaurusListByText: " + (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
+            WriteToLog(true, (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address);
 
             return list;
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
             return null;
          }
       }
-        
+
+      [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "getgtermgglossarylistbytext/{_text}&{_ft}")]
+      public List<GTermGGlossary> GetGTermGGlossaryListByText(string _text, string _ft)
+      {
+         try
+         {
+            FindType ft;
+            if (_text == null || _text.Length < 2 || !Enum.TryParse(_ft, out ft)) return null;
+
+            List<GTermGGlossary> list = dbMethods.GetGTermGGlossaryByText(_text, ft);
+
+            WriteToLog();
+
+            return list;
+         }
+         catch (Exception ex)
+         {
+            WriteToLog(ex.ToString());
+            return null;
+         }
+      }
+
+      [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "getgtermgglossarydescriptionbyid/{_id}")]
+      public GTermGGlossaryDescription GetGTermGGlossaryDescriptionByID(string _id)
+      {
+         try
+         {
+            int id;
+            if (!Int32.TryParse(_id, out id) || id < 0) return null;
+
+            GTermGGlossaryDescription ret = dbMethods.GetGTermGGlossaryDescriptionByID(id);
+
+            WriteToLog();
+
+            return ret;
+         }
+         catch (Exception ex)
+         {
+            WriteToLog(ex.ToString());
+            return null;
+         }
+      }
+
+
+
 
 
 
@@ -443,13 +452,11 @@ namespace WcfServiceLibrary
          try
          {
             dbMethods.FillTables();
-            if (writeToLog != null)
-               writeToLog("Dataset filled.");
+            WriteToLog("Dataset filled.");
          }
          catch (Exception ex)
          {
-            if (writeToLog != null)
-               writeToLog(ex.ToString());
+            WriteToLog(ex.ToString());
          }
       }
 
@@ -463,6 +470,18 @@ namespace WcfServiceLibrary
             return true;
 
          return false;
+      }
+
+      private static void WriteToLog(string str)
+      {
+         if (writeToLog != null)
+            writeToLog(str);
+      }
+
+      private static void WriteToLog(bool b = true, string adr = "", [CallerMemberName] string caller = null)
+      {
+         if (writeToLog != null && caller != null)
+            writeToLog(String.Format("{0}: {1}", (OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty).Address, caller));
       }
 
 
